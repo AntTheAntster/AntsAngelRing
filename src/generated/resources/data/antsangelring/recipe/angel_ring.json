@@ -4,12 +4,15 @@
   "key": {
     "N": {
       "item": "minecraft:nether_star"
+    },
+    "B": {
+      "item": "antsangelring:angel_block_item"
     }
   },
   "pattern": [
-    "NNN",
-    "N N",
-    "NNN"
+    "BBB",
+    "BNB",
+    "BBB"
   ],
   "result": {
     "count": 1,

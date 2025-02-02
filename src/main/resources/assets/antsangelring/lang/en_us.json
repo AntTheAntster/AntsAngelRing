@@ -1,7 +1,11 @@
 {
   "item.antsangelring.angel_ring": "Angel Ring",
 
+  "item.antsangelring.angel_block_item": "Angel Block",
+
   "item.antsangelring.angel_ring.tooltip": "Angel Ring granting creative flight. Inspired by Extra Utilities' Angel Ring",
 
-  "creativetab.antsangelring.tabname": "Ant's Angel Ring"
+  "creativetab.antsangelring.tabname": "Ant's Angel Ring",
+
+  "block.antsangelring.angel_block": "Angel Block"
 }
