@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "N N",
+    "NNN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "antsangelring:angel_ring"
+  }
+}
