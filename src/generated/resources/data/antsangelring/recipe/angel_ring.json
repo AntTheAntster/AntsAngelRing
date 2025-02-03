@@ -5,14 +5,23 @@
     "N": {
       "item": "minecraft:nether_star"
     },
-    "B": {
-      "item": "antsangelring:angel_block_item"
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "H": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "#": {
+      "item": "minecraft:netherite_block"
     }
   },
   "pattern": [
-    "BBB",
-    "BNB",
-    "BBB"
+    "NFN",
+    "GHG",
+    "G#G"
   ],
   "result": {
     "count": 1,

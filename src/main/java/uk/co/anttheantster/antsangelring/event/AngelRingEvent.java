@@ -11,14 +11,13 @@ public class AngelRingEvent {
     @SubscribeEvent
     public void onAngelRingUse(PlayerTickEvent.Pre event){
         Player player = event.getEntity();
+        if (player.isCreative() || player.isSpectator()) return;
+
         boolean hasAngelRing = player.getInventory().contains(ModItems.ANGEL_RING.get().getDefaultInstance());
 
         if (hasAngelRing){
             player.getAbilities().mayfly = true;
         } else {
-            if (player.getAbilities().mayfly) {
-                player.getAbilities().mayfly = false;
-            }
             player.getAbilities().flying = false;
         }
         player.onUpdateAbilities();

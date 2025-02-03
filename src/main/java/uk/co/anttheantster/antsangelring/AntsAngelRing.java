@@ -16,7 +16,6 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import uk.co.anttheantster.antsangelring.block.ModBlocks;
 import uk.co.anttheantster.antsangelring.event.AngelRingEvent;
 import uk.co.anttheantster.antsangelring.item.ModCreativeTab;
 import uk.co.anttheantster.antsangelring.item.ModItems;
@@ -39,7 +38,6 @@ public class AntsAngelRing
 
         ModItems.register(modEventBus);
         ModCreativeTab.register(modEventBus);
-        ModBlocks.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(new AngelRingEvent());
 

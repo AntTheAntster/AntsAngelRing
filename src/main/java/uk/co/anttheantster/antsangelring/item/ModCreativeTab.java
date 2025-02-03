@@ -7,7 +7,6 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import uk.co.anttheantster.antsangelring.AntsAngelRing;
-import uk.co.anttheantster.antsangelring.block.ModBlocks;
 
 import java.util.function.Supplier;
 
@@ -25,7 +24,6 @@ public class ModCreativeTab {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(ModItems.ANGEL_RING.get().getDefaultInstance());
-                        output.accept(ModItems.ANGEL_BLOCK_ITEM.get().getDefaultInstance());
 
                     }).build());
 }
