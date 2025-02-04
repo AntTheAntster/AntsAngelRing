@@ -19,15 +19,6 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
-    maven {
-        name = "Curios"
-        url = uri("https://maven.theillusivec4.top/")
-    }
-    maven {
-        // location of the maven that hosts JEI files since January 2023
-        name = "Jared's maven"
-        url = "https://maven.blamejared.com/"
-    }
 }
 
 base {
@@ -123,13 +114,6 @@ configurations {
 
 dependencies {
 
-    // compile against the JEI API but do not include it at runtime
-    compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
-    // at runtime, use the full JEI jar for NeoForge
-    runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
-
-    runtimeOnly "top.theillusivec4.curios:curios-neoforge:9.2.2+1.21.1"
-    compileOnly "top.theillusivec4.curios:curios-neoforge:9.2.2+1.21.1:api"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

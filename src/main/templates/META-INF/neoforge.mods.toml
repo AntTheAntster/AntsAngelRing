@@ -24,9 +24,3 @@ required = true
 versionRange = "[1.21,)"
 ordering = "NONE"
 side = "BOTH"
-
-[[dependencies.antsangelring]]
-modId="curios"
-type="required"
-versionRange="9.2.2+1.21.1"
-side="BOTH"
