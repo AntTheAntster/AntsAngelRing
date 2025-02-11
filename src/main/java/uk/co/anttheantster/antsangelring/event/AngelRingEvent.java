@@ -1,7 +1,10 @@
 package uk.co.anttheantster.antsangelring.event;
 
+import io.wispforest.accessories.api.slot.SlotPredicateRegistry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import uk.co.anttheantster.antsangelring.AntsAngelRing;
@@ -12,6 +15,7 @@ public class AngelRingEvent {
 
     @SubscribeEvent
     public static void onAngelRingUse(PlayerTickEvent.Pre event){
+        if (ModList.get().isLoaded("accessories")) return;
 
         Player player = event.getEntity();
         if (player.isCreative() || player.isSpectator()) return;
@@ -19,11 +23,20 @@ public class AngelRingEvent {
         boolean hasAngelRing = player.getInventory().contains(ModItems.ANGEL_RING.get().getDefaultInstance());
 
         if (hasAngelRing){
-            player.getAbilities().mayfly = true;
+            startFlight(player);
         } else {
-            player.getAbilities().flying = false;
-            player.getAbilities().mayfly = false;
+            stopFlight(player);
         }
+        player.onUpdateAbilities();
+    }
+
+    private static void startFlight(Player player){
+        player.getAbilities().mayfly = true;
+        player.onUpdateAbilities();
+    }
+    private static void stopFlight(Player player){
+        player.getAbilities().mayfly = false;
+        player.getAbilities().flying = false;
         player.onUpdateAbilities();
     }
 }

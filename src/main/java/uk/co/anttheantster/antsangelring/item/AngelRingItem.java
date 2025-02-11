@@ -1,5 +1,11 @@
 package uk.co.anttheantster.antsangelring.item;
 
+import io.wispforest.accessories.api.AccessoryItem;
+import io.wispforest.accessories.api.AccessoryRegistry;
+import io.wispforest.accessories.api.slot.SlotBasedPredicate;
+import io.wispforest.accessories.api.slot.SlotGroup;
+import io.wispforest.accessories.api.slot.SlotReference;
+import io.wispforest.accessories.api.slot.SlotType;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -12,7 +18,7 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class AngelRingItem extends Item {
+public class AngelRingItem extends AccessoryItem {
     public AngelRingItem() {
         super(new Item.Properties()
                 .stacksTo(1)
@@ -28,6 +34,31 @@ public class AngelRingItem extends Item {
         tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip").withStyle(ChatFormatting.AQUA));
 
         super.appendHoverText(stack, context, tooltips, flags);
+    }
+
+    @Override
+    public boolean canEquipFromUse(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean canEquip(ItemStack stack, SlotReference reference) {
+        return reference.entity() instanceof Player;
+    }
+
+    @Override
+    public void onEquip(ItemStack stack, SlotReference reference) {
+        Player player = (Player) reference.entity();
+        if (player.isCreative() || player.isSpectator()) return;
+
+        startFlight(player);
+
+    }
+
+    @Override
+    public void onUnequip(ItemStack stack, SlotReference reference) {
+        Player player = (Player) reference.entity();
+        stopFlight(player);
     }
 
     private void startFlight(Player player){
