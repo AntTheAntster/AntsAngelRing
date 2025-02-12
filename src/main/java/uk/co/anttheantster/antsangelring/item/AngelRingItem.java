@@ -1,11 +1,7 @@
 package uk.co.anttheantster.antsangelring.item;
 
 import io.wispforest.accessories.api.AccessoryItem;
-import io.wispforest.accessories.api.AccessoryRegistry;
-import io.wispforest.accessories.api.slot.SlotBasedPredicate;
-import io.wispforest.accessories.api.slot.SlotGroup;
 import io.wispforest.accessories.api.slot.SlotReference;
-import io.wispforest.accessories.api.slot.SlotType;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -19,6 +15,7 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 public class AngelRingItem extends AccessoryItem {
+
     public AngelRingItem() {
         super(new Item.Properties()
                 .stacksTo(1)
@@ -31,7 +28,11 @@ public class AngelRingItem extends AccessoryItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltips, TooltipFlag flags) {
 
-        tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip").withStyle(ChatFormatting.AQUA));
+        if (flags.hasShiftDown()){
+            tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip").withStyle(ChatFormatting.AQUA));
+            return;
+        }
+        tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip_no_shift").withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(stack, context, tooltips, flags);
     }
