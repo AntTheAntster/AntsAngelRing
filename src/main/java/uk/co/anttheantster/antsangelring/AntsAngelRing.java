@@ -18,12 +18,11 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import uk.co.anttheantster.antsangelring.item.ModCreativeTab;
 import uk.co.anttheantster.antsangelring.item.ModItems;
-import uk.co.anttheantster.antsangelring.util.accessories.AngelRingAccessory;
 
 @Mod(AntsAngelRing.MOD_ID)
 public class AntsAngelRing
 {
-    public boolean accessoriesLoaded;
+    //public boolean accessoriesLoaded;
 
     public static final String MOD_ID = "antsangelring";
 
@@ -38,15 +37,17 @@ public class AntsAngelRing
 
         NeoForge.EVENT_BUS.register(this);
 
-        accessoriesLoaded = ModList.get().isLoaded("accessories");
+        //accessoriesLoaded = ModList.get().isLoaded("accessories");
 
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        /*
         if (accessoriesLoaded) {
             AngelRingAccessory.init();
         }
+         */
     }
 
     @SubscribeEvent

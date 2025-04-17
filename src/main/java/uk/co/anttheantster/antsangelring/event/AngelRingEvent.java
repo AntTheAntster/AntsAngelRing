@@ -2,7 +2,6 @@ package uk.co.anttheantster.antsangelring.event;
 
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import uk.co.anttheantster.antsangelring.AntsAngelRing;
@@ -13,7 +12,6 @@ public class AngelRingEvent {
 
     @SubscribeEvent
     public static void onAngelRingUse(PlayerTickEvent.Pre event){
-        if (ModList.get().isLoaded("accessories")) return;
 
         Player player = event.getEntity();
         if (player.isCreative() || player.isSpectator()) return;
