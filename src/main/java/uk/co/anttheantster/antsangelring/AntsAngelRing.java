@@ -1,5 +1,7 @@
 package uk.co.anttheantster.antsangelring;
 
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -16,6 +18,13 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.CuriosCapability;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurio;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import uk.co.anttheantster.antsangelring.curios.AngelRingCurio;
+import uk.co.anttheantster.antsangelring.item.AngelRingItem;
 import uk.co.anttheantster.antsangelring.item.ModCreativeTab;
 import uk.co.anttheantster.antsangelring.item.ModItems;
 
@@ -31,18 +40,18 @@ public class AntsAngelRing
     public AntsAngelRing(IEventBus modEventBus, ModContainer modContainer)
     {
         modEventBus.addListener(this::commonSetup);
+        //modEventBus.addListener(this::registerCapabilities);
 
         ModItems.register(modEventBus);
         ModCreativeTab.register(modEventBus);
-
-        NeoForge.EVENT_BUS.register(this);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        NeoForge.EVENT_BUS.register(this);
+        CuriosApi.registerCurio(ModItems.ANGEL_RING.get(), new AngelRingCurio());
     }
 
     @SubscribeEvent
@@ -59,7 +68,21 @@ public class AntsAngelRing
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             LOGGER.info("Hello {}!", Minecraft.getInstance().getUser().getName());
-
         }
     }
+
+    /*
+    public void registerCapabilities(final RegisterCapabilitiesEvent event){
+        event.registerItem(
+                CuriosCapability.ITEM,
+                (stack, context) -> new ICurio() {
+                    @Override
+                    public ItemStack getStack() {
+                        return stack;
+                    }
+                },
+                ModItems.ANGEL_RING.get());
+    }
+
+     */
 }
