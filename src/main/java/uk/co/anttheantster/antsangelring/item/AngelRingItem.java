@@ -1,14 +1,12 @@
 package uk.co.anttheantster.antsangelring.item;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -17,11 +15,12 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.List;
-import java.util.Optional;
-
 public class AngelRingItem extends Item implements ICurioItem {
     public AngelRingItem() {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties()
+                .stacksTo(1)
+                .fireResistant()
+                .rarity(Rarity.EPIC));
     }
 
 
@@ -30,8 +29,6 @@ public class AngelRingItem extends Item implements ICurioItem {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltips, TooltipFlag flags) {
 
         tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip"));
-        tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip2")
-                .withStyle(style -> style.applyFormat(ChatFormatting.AQUA)));
 
         super.appendHoverText(stack, context, tooltips, flags);
     }

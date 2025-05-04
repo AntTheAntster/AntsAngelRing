@@ -1,6 +1,7 @@
 package uk.co.anttheantster.antsangelring.item;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import uk.co.anttheantster.antsangelring.AntsAngelRing;
