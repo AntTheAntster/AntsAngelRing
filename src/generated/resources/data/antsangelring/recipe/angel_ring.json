@@ -1,27 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "ring",
   "key": {
-    "N": {
-      "item": "minecraft:nether_star"
-    },
-    "G": {
-      "item": "minecraft:gold_block"
-    },
-    "F": {
-      "item": "minecraft:feather"
-    },
-    "H": {
-      "item": "minecraft:heart_of_the_sea"
-    },
-    "#": {
-      "item": "minecraft:netherite_block"
-    }
+    "H": "minecraft:heart_of_the_sea",
+    "N": "minecraft:nether_star",
+    "G": "minecraft:gold_block",
+    "B": "minecraft:netherite_block",
+    "F": "minecraft:feather"
   },
   "pattern": [
     "NFN",
     "GHG",
-    "G#G"
+    "GBG"
   ],
   "result": {
     "count": 1,
