@@ -1,12 +1,11 @@
 {
   "item.antsangelring.angel_ring": "Angel Ring",
 
-  "item.antsangelring.angel_block_item": "Angel Block",
+  "key.antsangelring.toggle": "Toggle Ring",
 
   "item.antsangelring.angel_ring.tooltip": "Angel Ring granting creative flight. Inspired by Extra Utilities' Angel Ring",
+  "item.antsangelring.angel_ring.tooltip2": "Toggle On/Off via keybind in controls",
   "item.antsangelring.angel_ring.tooltip_no_shift": "Hold [Shift] for item description",
 
-  "creativetab.antsangelring.tabname": "Ant's Angel Ring",
-
-  "block.antsangelring.angel_block": "Angel Block"
+  "creativetab.antsangelring.tabname": "Ant's Angel Ring"
 }

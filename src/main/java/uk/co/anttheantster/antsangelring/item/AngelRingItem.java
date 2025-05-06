@@ -7,10 +7,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import uk.co.anttheantster.antsangelring.util.AngelRingSettings;
 
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class AngelRingItem extends AccessoryItem {
 
         if (flags.hasShiftDown()){
             tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip").withStyle(ChatFormatting.AQUA));
+            tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip2").withStyle(ChatFormatting.GOLD));
             return;
         }
         tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip_no_shift").withStyle(ChatFormatting.GRAY));
@@ -48,18 +51,16 @@ public class AngelRingItem extends AccessoryItem {
     }
 
     @Override
-    public void onEquip(ItemStack stack, SlotReference reference) {
-        Player player = (Player) reference.entity();
-        if (player.isCreative() || player.isSpectator()) return;
-
-        startFlight(player);
-
-    }
-
-    @Override
-    public void onUnequip(ItemStack stack, SlotReference reference) {
-        Player player = (Player) reference.entity();
-        stopFlight(player);
+    public void tick(ItemStack stack, SlotReference reference) {
+        LivingEntity entity = reference.entity();
+        if (entity instanceof Player player) {
+            if (player.isCreative() || player.isSpectator()) return;
+            if (AngelRingSettings.isAngelRingEnabled){
+                startFlight(player);
+            } else {
+                stopFlight(player);
+            }
+        }
     }
 
     private void startFlight(Player player){
