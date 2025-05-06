@@ -23,7 +23,7 @@ import uk.co.anttheantster.antsangelring.util.VersionChecker;
 @Mod(AntsAngelRing.MOD_ID)
 public class AntsAngelRing {
     public static final String MOD_ID = "antsangelring";
-    public static final String version = "1.1.1";
+    public static final String version = "1.2.1";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
