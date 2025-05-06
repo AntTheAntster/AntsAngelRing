@@ -1,5 +1,6 @@
 package uk.co.anttheantster.antsangelring.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,7 +21,11 @@ public class AngelRingItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltips, TooltipFlag flags) {
 
-        tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip"));
+        if (flags.hasShiftDown()){
+            tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip").withStyle(ChatFormatting.AQUA));
+            tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip2").withStyle(ChatFormatting.GOLD));
+        }
+        tooltips.add(Component.translatable("item.antsangelring.angel_ring.tooltip_noshift").withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(stack, context, tooltips, flags);
     }
