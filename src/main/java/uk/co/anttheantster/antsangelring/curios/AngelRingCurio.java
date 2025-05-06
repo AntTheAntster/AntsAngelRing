@@ -10,28 +10,10 @@ import top.theillusivec4.curios.api.SlotResult;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import uk.co.anttheantster.antsangelring.item.ModItems;
+import uk.co.anttheantster.antsangelring.util.AngelRingSettings;
 
 public class AngelRingCurio implements ICurioItem {
 
-    @Override
-    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-        LivingEntity entity = slotContext.entity();
-        if (entity instanceof Player player){
-            if (player.isCreative() || player.isSpectator()) return;
-
-            ICuriosItemHandler handler = CuriosApi.getCuriosInventory(entity).orElse(null);
-            if (handler == null) return;
-            SlotResult equipped = handler.findFirstCurio(ModItems.ANGEL_RING.get()).orElse(null);
-            if (equipped != null) {
-                if (!player.getAbilities().mayfly) {
-                    startFlight(player);
-                } else if (player.getAbilities().mayfly) {
-                    stopFlight(player);
-                }
-            }
-        }
-        ICurioItem.super.onEquip(slotContext, prevStack, stack);
-    }
 
     @Override
     public void onEquipFromUse(SlotContext slotContext, ItemStack stack) {
@@ -41,18 +23,28 @@ public class AngelRingCurio implements ICurioItem {
     }
 
     @Override
-    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-
-        if (slotContext.entity() instanceof Player player) {
-            stopFlight(player);
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+        if (!(entity instanceof Player player)) {
+            return;
         }
 
-        ICurioItem.super.onUnequip(slotContext, newStack, stack);
+        if (player.isCreative() || player.isSpectator()) return;
+
+        if (entity.level().isClientSide) {
+            if (AngelRingSettings.angelRingToggled){
+                startFlight(player);
+            } else {
+                stopFlight(player);
+            }
+        }
     }
 
     private void startFlight(Player player){
-        player.getAbilities().mayfly = true;
-        player.onUpdateAbilities();
+        if (AngelRingSettings.angelRingToggled) {
+            player.getAbilities().mayfly = true;
+            player.onUpdateAbilities();
+        }
     }
     private void stopFlight(Player player){
         player.getAbilities().mayfly = false;

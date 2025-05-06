@@ -19,70 +19,46 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.CuriosCapability;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import uk.co.anttheantster.antsangelring.client.keybinds.KeyBindsHandler;
 import uk.co.anttheantster.antsangelring.curios.AngelRingCurio;
-import uk.co.anttheantster.antsangelring.item.AngelRingItem;
 import uk.co.anttheantster.antsangelring.item.ModCreativeTab;
 import uk.co.anttheantster.antsangelring.item.ModItems;
+import uk.co.anttheantster.antsangelring.util.VersionChecker;
 
 
 @Mod(AntsAngelRing.MOD_ID)
-public class AntsAngelRing
-{
+public class AntsAngelRing {
 
     public static final String MOD_ID = "antsangelring";
+    public static final String version = "1.2.1";
 
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public AntsAngelRing(IEventBus modEventBus, ModContainer modContainer)
-    {
+    public AntsAngelRing(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
-        //modEventBus.addListener(this::registerCapabilities);
 
         ModItems.register(modEventBus);
         ModCreativeTab.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        NeoForge.EVENT_BUS.register(VersionChecker.class);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
+    private void commonSetup(final FMLCommonSetupEvent event) {
         NeoForge.EVENT_BUS.register(this);
         CuriosApi.registerCurio(ModItems.ANGEL_RING.get(), new AngelRingCurio());
     }
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
+    public void onServerStarting(ServerStartingEvent event) {
 
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
+    public static class ClientModEvents {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            LOGGER.info("Hello {}!", Minecraft.getInstance().getUser().getName());
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            NeoForge.EVENT_BUS.register(new KeyBindsHandler());
         }
     }
-
-    /*
-    public void registerCapabilities(final RegisterCapabilitiesEvent event){
-        event.registerItem(
-                CuriosCapability.ITEM,
-                (stack, context) -> new ICurio() {
-                    @Override
-                    public ItemStack getStack() {
-                        return stack;
-                    }
-                },
-                ModItems.ANGEL_RING.get());
-    }
-
-     */
 }
