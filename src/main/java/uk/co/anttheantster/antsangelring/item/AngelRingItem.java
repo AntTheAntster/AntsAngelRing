@@ -26,6 +26,7 @@ public class AngelRingItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltips, TooltipFlag flags) {
         if (flags.hasShiftDown()) {
             tooltips.accept(Component.translatable("item.antsangelring.angel_ring.tooltip").withStyle(ChatFormatting.AQUA));
+            tooltips.accept(Component.translatable("item.antsangelring.angel_ring.tooltip2").withStyle(ChatFormatting.GOLD));
             return;
         }
         tooltips.accept(Component.translatable("item.antsangelring.angel_ring.tooltip_no_shift").withStyle(ChatFormatting.GRAY));
