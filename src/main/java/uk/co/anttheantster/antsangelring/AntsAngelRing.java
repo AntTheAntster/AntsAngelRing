@@ -23,7 +23,7 @@ import uk.co.anttheantster.antsangelring.util.VersionChecker;
 @Mod(AntsAngelRing.MOD_ID)
 public class AntsAngelRing {
     public static final String MOD_ID = "antsangelring";
-    public static final String version = "1.2.1";
+    public static final String version = "1.2.1.1";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -60,13 +60,13 @@ public class AntsAngelRing {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             NeoForge.EVENT_BUS.register(new KeyBindsHandler());
+
+            NeoForge.EVENT_BUS.register(VersionChecker.class);
+
         }
     }
 
     private void setup(){
         angelRingSettings = new AngelRingSettings();
-
-        NeoForge.EVENT_BUS.register(VersionChecker.class);
-
     }
 }
