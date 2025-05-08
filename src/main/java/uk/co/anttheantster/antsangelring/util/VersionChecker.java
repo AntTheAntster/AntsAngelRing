@@ -70,7 +70,7 @@ public class VersionChecker {
                 Component.literal("§c→ " + updateUrl), false);
         player.displayClientMessage(Component.literal("§eMain Changes: " + mainChanges), false);
         if (messageFromAnt != null) {
-            player.displayClientMessage(Component.literal("§eMessage from Ant: " + messageFromAnt), false);
+            player.displayClientMessage(Component.literal("§aMessage from Ant: " + messageFromAnt), false);
         }
     }
 }
