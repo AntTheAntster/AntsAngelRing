@@ -15,6 +15,8 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import uk.co.anttheantster.antsangelring.client.KeyBindsHandler;
+import uk.co.anttheantster.antsangelring.event.AngelRingEvent;
+import uk.co.anttheantster.antsangelring.event.TestingClass;
 import uk.co.anttheantster.antsangelring.item.ModCreativeTab;
 import uk.co.anttheantster.antsangelring.item.ModItems;
 import uk.co.anttheantster.antsangelring.util.AngelRingSettings;
@@ -39,6 +41,11 @@ public class AntsAngelRing {
         NeoForge.EVENT_BUS.register(this);
 
         //accessoriesLoaded = ModList.get().isLoaded("accessories");
+        NeoForge.EVENT_BUS.register(new TestingClass());
+
+        NeoForge.EVENT_BUS.register(new AngelRingEvent());
+
+
 
         setup();
     }
@@ -62,7 +69,6 @@ public class AntsAngelRing {
             NeoForge.EVENT_BUS.register(new KeyBindsHandler());
 
             NeoForge.EVENT_BUS.register(VersionChecker.class);
-
         }
     }
 
