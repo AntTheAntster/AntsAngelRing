@@ -2,6 +2,6 @@ package uk.co.anttheantster.antsangelring.util;
 
 public class AngelRingSettings {
 
-    public static boolean isAngelRingToggled = false;
+    public static boolean isAngelRingToggled = true;
 
 }

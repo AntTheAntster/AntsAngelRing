@@ -2,8 +2,6 @@ package uk.co.anttheantster.antsangelring;
 
 import org.slf4j.Logger;
 
-import com.mojang.logging.LogUtils;
-
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -25,11 +23,9 @@ import uk.co.anttheantster.antsangelring.util.VersionChecker;
 @Mod(AntsAngelRing.MOD_ID)
 public class AntsAngelRing {
     public static final String MOD_ID = "antsangelring";
-    public static final String version = "1.2.1.1";
+    public static final String version = "1.2.1.2";
 
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    private AngelRingSettings angelRingSettings;
+    public AngelRingSettings angelRingSettings;
 
     public AntsAngelRing(IEventBus modEventBus, ModContainer modContainer)
     {
@@ -41,7 +37,7 @@ public class AntsAngelRing {
         NeoForge.EVENT_BUS.register(this);
 
         //accessoriesLoaded = ModList.get().isLoaded("accessories");
-        NeoForge.EVENT_BUS.register(new TestingClass());
+        //NeoForge.EVENT_BUS.register(new TestingClass());
 
         NeoForge.EVENT_BUS.register(new AngelRingEvent());
 

@@ -22,6 +22,8 @@ public class VersionChecker {
 
     private static String latestVersion;
     private static String updateUrl;
+    private static String mainChanges;
+    private static String messageFromAnt;
 
     @SubscribeEvent
     public static void clientTick(PlayerTickEvent.Post event) {
@@ -45,6 +47,10 @@ public class VersionChecker {
                     JsonObject json = new JsonParser().parse(response.toString()).getAsJsonObject();
                     latestVersion = json.get("latest_version").getAsString();
                     updateUrl = json.get("update_url").getAsString();
+                    mainChanges = json.get("main_changes").getAsString();
+                    if (json.get("message_from_ant").getAsString() != null) {
+                        messageFromAnt = json.get("message_from_ant").getAsString();
+                    }
 
                     if (!latestVersion.equals(AntsAngelRing.version)){
                         displayMessage(player);
@@ -62,5 +68,9 @@ public class VersionChecker {
                 false);
         player.displayClientMessage(
                 Component.literal("§c→ " + updateUrl), false);
+        player.displayClientMessage(Component.literal("§eMain Changes: " + mainChanges), false);
+        if (messageFromAnt != null) {
+            player.displayClientMessage(Component.literal("§aMessage From Ant: " + messageFromAnt), false);
+        }
     }
 }

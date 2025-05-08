@@ -14,6 +14,7 @@ public class AngelRingEvent {
         Player player = event.getEntity();
         if (player.isCreative() || player.isSpectator()) return;
 
+
         boolean hasAngelRing = player.getInventory().contains(ModItems.ANGEL_RING.get().getDefaultInstance());
 
 
