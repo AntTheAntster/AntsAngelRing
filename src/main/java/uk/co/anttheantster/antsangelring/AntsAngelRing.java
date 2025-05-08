@@ -28,7 +28,7 @@ public class AntsAngelRing {
     public boolean accessoriesLoaded;
 
     public static final String MOD_ID = "antsangelring";
-    public static final String version = "1.2.1.1";
+    public static final String version = "1.2.1.2";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -42,8 +42,6 @@ public class AntsAngelRing {
         NeoForge.EVENT_BUS.register(this);
 
         accessoriesLoaded = ModList.get().isLoaded("accessories");
-
-        NeoForge.EVENT_BUS.register(new KeyBindsHandler());
 
     }
 
@@ -66,6 +64,8 @@ public class AntsAngelRing {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            NeoForge.EVENT_BUS.register(new KeyBindsHandler());
+
             NeoForge.EVENT_BUS.register(VersionChecker.class);
         }
     }
