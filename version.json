@@ -1,7 +1,7 @@
 {
   "modid": "antsangelring",
   "latest_version": "1.2.1.2",
-  "update_url": "https://www.curseforge.com/minecraft/mc-mods/ants-angel-ring"
-  "main_changes": "Fixed Server-Client not syncing correctly. Therefore, refusing flight on any server. Update if using on a server"
+  "update_url": "https://www.curseforge.com/minecraft/mc-mods/ants-angel-ring",
+  "main_changes": "Fixed Server-Client not syncing correctly. Therefore, refusing flight on any server. Update if using on a server",
   "message_from_ant": "Hi all, sorry about the frequent updates, I'm not the greatest Mod Developer in the world but I am getting there! Thanks for understanding!"
 }
