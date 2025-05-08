@@ -31,12 +31,10 @@ public class AngelRingCurio implements ICurioItem {
 
         if (player.isCreative() || player.isSpectator()) return;
 
-        if (entity.level().isClientSide) {
-            if (AngelRingSettings.angelRingToggled){
-                startFlight(player);
-            } else {
-                stopFlight(player);
-            }
+        if (AngelRingSettings.angelRingToggled){
+            startFlight(player);
+        } else {
+            stopFlight(player);
         }
     }
 

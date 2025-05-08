@@ -16,6 +16,8 @@ import uk.co.anttheantster.antsangelring.client.keybinds.KeyBindsHandler;
 import uk.co.anttheantster.antsangelring.curios.AngelRingCurio;
 import uk.co.anttheantster.antsangelring.item.ModCreativeTab;
 import uk.co.anttheantster.antsangelring.item.ModItems;
+import uk.co.anttheantster.antsangelring.util.AngelRingSettings;
+import uk.co.anttheantster.antsangelring.util.TestClass;
 import uk.co.anttheantster.antsangelring.util.VersionChecker;
 
 
@@ -25,6 +27,8 @@ public class AntsAngelRing {
     public static final String MOD_ID = "antsangelring";
     public static final String version = "1.2.1.2";
 
+    public static AngelRingSettings angelRingSettings;
+
     public AntsAngelRing(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
@@ -32,6 +36,10 @@ public class AntsAngelRing {
         ModCreativeTab.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        //NeoForge.EVENT_BUS.register(new TestClass());
+
+        setup();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -53,5 +61,9 @@ public class AntsAngelRing {
 
             NeoForge.EVENT_BUS.register(VersionChecker.class);
         }
+    }
+
+    private void setup() {
+        angelRingSettings = new AngelRingSettings();
     }
 }
