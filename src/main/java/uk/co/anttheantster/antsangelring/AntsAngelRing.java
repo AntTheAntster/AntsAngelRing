@@ -1,12 +1,5 @@
 package uk.co.anttheantster.antsangelring;
 
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
-
-import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -30,7 +23,7 @@ import uk.co.anttheantster.antsangelring.util.VersionChecker;
 public class AntsAngelRing {
 
     public static final String MOD_ID = "antsangelring";
-    public static final String version = "1.2.1";
+    public static final String version = "1.2.1.2";
 
     public AntsAngelRing(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
@@ -39,8 +32,6 @@ public class AntsAngelRing {
         ModCreativeTab.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-
-        NeoForge.EVENT_BUS.register(VersionChecker.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -59,6 +50,8 @@ public class AntsAngelRing {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             NeoForge.EVENT_BUS.register(new KeyBindsHandler());
+
+            NeoForge.EVENT_BUS.register(VersionChecker.class);
         }
     }
 }
