@@ -30,7 +30,7 @@ public class AntsAngelRing {
     public boolean accessoriesLoaded;
 
     public static final String MOD_ID = "antsangelring";
-    public static final String version = "1.2.1.2";
+    public static final String version = "1.2.1.3";
 
     private static AngelRingSettings angelRingSettings;
 
