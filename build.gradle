@@ -117,7 +117,7 @@ configurations {
 
 dependencies {
     //implementation("io.wispforest:accessories-neoforge:${project.accessories_version}")
-    implementation("me.shedaniel:RoughlyEnoughItems-neoforge:19.0.806")
+    implementation("me.shedaniel:RoughlyEnoughItems-neoforge:20.0.810")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
