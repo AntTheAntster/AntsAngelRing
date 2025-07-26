@@ -10,7 +10,7 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.settings.KeyConflictContext;
 import uk.co.anttheantster.antsangelring.AntsAngelRing;
 
-@EventBusSubscriber(modid = AntsAngelRing.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = AntsAngelRing.MOD_ID, value = Dist.CLIENT)
 public class KeyBinds {
     public static final KeyBinds INSTANCE = new KeyBinds();
 
