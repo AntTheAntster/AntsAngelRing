@@ -1,7 +1,7 @@
 {
   "modid": "antsangelring",
-  "latest_version": "1.2.1.2",
+  "latest_version": "1.2.1.3",
   "update_url": "https://www.curseforge.com/minecraft/mc-mods/ants-angel-ring",
-  "main_changes": "Fixed Server-Client not syncing correctly. Therefore, refusing flight on any server. Update if using on a server",
-  "message_from_ant": "Hi all, sorry about the frequent updates, I'm not the greatest Mod Developer in the world but I am getting there! Thanks for understanding!"
+  "main_changes": "Updated NeoForge version across all mod versions to improve Client > Server Communication",
+  "message_from_ant": "Hi all, Apologies about the delayed update, I have been keeping an eye on bug repoorts and working on fixing them. Hopefully this update will help. Next I play on adding Accessories support to 1.21.5+ so stay tuned!"
 }
